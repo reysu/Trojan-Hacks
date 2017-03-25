@@ -1,3 +1,3 @@
 Trojan Hacks 3/25/17
 
-Redebot
+Redebot CS Major Personal Assistant
