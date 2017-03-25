@@ -8,7 +8,8 @@ using namespace std;
 
 Class Student{
   public:
-    Student()
+    Student(int idNumber,string studentFullName,string username,string password
+    vector<string classNames> currentlyTaking);
     bool isLogInValid();
     string getGrade(string className); //returns curved grades
     void rateCP(string CPname, int rating);// updates CP rating
@@ -21,6 +22,8 @@ Class Student{
     map<string className, bool currentlyTaking> csClasses;
     string username;
     string password;
+    int idNumber;
+    string studentFullName;
     map<string className, double grade> totalCSGrades;
     int totalRatings;
     int numRatings;
