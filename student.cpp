@@ -1,7 +1,7 @@
 #include "student.h"
 
 Student::Student(int id,string studentName,
-  string user,string pass, vector<string classNames> currentlyTaking){
+  string user,string pass, vector<string> currentlyTaking){
     idNumber = id;
     studentFullName = studentName;
     username = user;
@@ -27,11 +27,11 @@ bool Student::isLogInValid(string inputPassword){
 /* Returns the student's percentage for a given class (Unscaled)*/
 double Student::getGrade(string className){
   map<string, double>::iterator it = totalCSGrades.find(className);
-  double studentGrade = 0.0
+  double studentGrade = 0.0;
   if(it != totalCSGrades.end()){//found
     studentGrade = it->second;
   }
-  return studentGrade
+  return studentGrade;
 }
 /* Should update a CP's rating */
 void Student::rateCP(string CPname, int rating){
@@ -54,7 +54,7 @@ string Student::getUsername(){
 }
 /* CP's will be able to call this function to give a student a rating */
 void Student::submitRating(int rating){
-  if(rating < 0 || > 5){ //invalid rating
+  if(rating < 0 || rating > 5){ //invalid rating
     return;
   }
   totalRatings += rating;

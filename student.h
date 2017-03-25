@@ -6,10 +6,10 @@
 #include <map>
 using namespace std;
 
-Class Student{
+class Student{
   public:
     Student(int id,string studentName,string user,string pass,
-    vector<string classNames> currentlyTaking);
+    vector<string> currentlyTaking);
     /* Checks if log in password is valid */
     bool isLogInValid(string inputPassword);
     /* Returns student's grade for given class(Uncurved)*/
@@ -29,12 +29,12 @@ Class Student{
   private:
     /*map of all CS classes, and an bool to indicate whether or not they are
     currently taking that class */
-    map<string className, bool currentlyTaking> csClasses;
+    map<string, bool> csClasses;
     string username;
     string password;
     int idNumber;
     string studentFullName;
-    map<string className, double grade> totalCSGrades;
+    map<string, double> totalCSGrades;
     int totalRatings;
     int numRatings;
-}
+};
