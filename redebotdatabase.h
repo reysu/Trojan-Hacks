@@ -2,7 +2,6 @@
 #define REDEBOTDATABASE_H
 
 #include "student.h"
-#include "cp.h"
 
 #include <map>
 #include <set>
@@ -14,7 +13,7 @@ public:
 	~RedebotDatabase();
 
 	void addStudent(Student* student);
-	void addCP(CP* cp);
+	void addCPs(CP* cp);
 	void addClass(string name);
 
 	vector<Student*> getTotalStudents();
