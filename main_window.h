@@ -17,7 +17,9 @@
 	#include <QListWidgetItem>
 	#include <QCalendarWidget>
 	#include <QApplication>
+	#include <QStackedWidget>
 	#include "redebotdatabase.h"
+	#include <QScrollArea>
 
 class MainWindow : public QWidget
 {
@@ -32,8 +34,15 @@ private slots:
 private:
 /*Overall Layout*/
 	RedebotDatabase* ds;
-	QVBoxLayout* overallLayout;
-	QLabel* welcomeLabel;
+	QGridLayout* overallLayout;
 
+/*Header Layout*/
+	QGridLayout* headerLayout;
+	QLabel* welcomeLabel;
+	QFont titleFont;
+	QPushButton* viewOfficeHoursButton;
+	QPushButton* viewGradesButton;
+	QFont captionFont;
+	QLabel* currentUser;
 
 };
