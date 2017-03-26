@@ -9,13 +9,13 @@ RedebotDatabase::RedebotDatabase() {
 RedebotDatabase::~RedebotDatabase()
 {
 	// Delete memory in vector of total Students.
-	for(int i = 0; i < totalStudents.size(); i++)
+	for(unsigned int i = 0; i < totalStudents.size(); i++)
 	{
 		delete totalStudents[i];
 	}
 	
 	// Delete memory in vector of total CPs.
-	for(int j = 0; j < totalCPs.size(); j++)
+	for(unsigned int j = 0; j < totalCPs.size(); j++)
 	{
 		delete totalCPs[j];
 	}
