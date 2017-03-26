@@ -34,13 +34,19 @@ MainWindow::MainWindow(RedebotDatabase* data){
     stackedWidget->addWidget(gradesPageWidget);
     stackedWidget->addWidget(officeHoursPageWidget);
 	
-	contentLayout->addWidget(stackedWidget);
+	QScrollArea *scroll = new QScrollArea;
+	scroll->setWidget(stackedWidget);
+	scroll->setWidgetResizable(true);
+
+	contentLayout->addWidget(scroll);
+	//contentLayout->addWidget(stackedWidget);
 
 	welcomePageLayout = new QGridLayout();
 
 	welcomePageWidget->setLayout(welcomePageLayout);
 		content = new QLabel("hello world, welcome to Redebot, \n USC's first CS Major Assistant");
 		content->setSizePolicy(QSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed));
+	//welcomePageWidget->setMinimumHeight(350);
 	    content->setMinimumHeight(350);
 	 //   content->setMaximumWidth(100);
 	welcomePageLayout->addWidget(content,2,0,1,1);
@@ -50,7 +56,11 @@ MainWindow::MainWindow(RedebotDatabase* data){
 	
 	gradesPageLayout = new QGridLayout();
 	gradesPageWidget->setLayout(gradesPageLayout);
-	gradesLabel = new QLabel("hey");
+	
+	
+	//gradesPageWidget->QScrollArea::setWidget(gradesPageLayout);
+	gradesLabel = new QLabel("hey\n how's it goingheyhey\n how's it goinghey\n how's it goinghey\n how's it goinghey\n how's it goinghey\n how's it goinghey\n how's it goinghey\n how's it going\n how's it goinghey\n how's it goinghey\n how's it goinghey\n how's it goinghey\n how's it goinghey\n how's it goinghey\n how's it goinghey\n how's it goinghey\n how's it goinghey\n how's it goinghey\n how's it goinghey\n how's it goinghey\n how's it goinghey\n how's it going");
+
 	//	gradesLabel->setSizePolicy(QSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed));
 	 //   gradesLabel->setMinimumHeight(350);
     gradesPageLayout->addWidget(gradesLabel,0,0,1,1);
