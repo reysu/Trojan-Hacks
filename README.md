@@ -19,3 +19,4 @@ Users are Students and CPs
 5. Students can make appointments with CPs. CP office hours are split into half
 scheduled and half walk-ins.
 
+![Redebot](/1.png?raw=true)
