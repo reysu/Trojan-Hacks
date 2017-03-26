@@ -2,7 +2,8 @@
 #define REDEBOTDATABASE_H
 
 #include <map>
-
+#include <set>
+#include "student.h"
 class RedebotDatabase {
 public:
 	RedebotDatabase();
