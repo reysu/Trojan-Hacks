@@ -65,7 +65,7 @@ double Student::getRating(){
     return double(totalRatings)/numRatings;
 }
 
-/* Allows you to make a reservation with a CP, only on same day*/map<int,vector<Student*> > totalTimes
+/* Allows you to make a reservation with a CP, only on same day*/
 void Student::makeReservation(, string CPname, string className,
   int time){
   /*
@@ -78,7 +78,7 @@ void Student::makeReservation(, string CPname, string className,
       vector<Student*> temp = it->second;
       for(int i = 0; i < temp.size(); i++)
       {
-
+        if()
       }
     }
 
