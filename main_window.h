@@ -35,7 +35,8 @@ private slots:
 	void displayGradesPage();
 	void displayHomePage();
 	void displayOfficeHoursPage();
-	
+	void logoutlogin();
+	void loginWindowDisplay();
 private:
 /*Overall Layout*/
 	RedebotDatabase* ds;
@@ -49,6 +50,7 @@ private:
 	QPushButton* viewGradesButton;
 	QFont captionFont;
 	QLabel* currentUser;
+	QPushButton* logoutButton;
 
 /* Content Layout*/
 	QGridLayout* contentLayout;
@@ -68,5 +70,12 @@ private:
 /*office hours page*/
 	QVBoxLayout* officeHoursPageLayout;
 	QLabel* officeHoursLabel;
+/*loginWindow*/
+	QWidget *loginWindow;
+	QHBoxLayout* loginLayout;
+	QPushButton* login;
+	QLineEdit* usernameInput;
+	QLineEdit* passwordInput;
+
 };
 

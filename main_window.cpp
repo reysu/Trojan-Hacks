@@ -17,7 +17,9 @@ MainWindow::MainWindow(RedebotDatabase* data){
 
     captionFont.setPointSize(10);
     currentUser = new QLabel("<i>You are currently logged in as Eric Su</i>"); // WRITE FUNCTION THAT will detect whether or not user is logged in, and who is logged in
-    headerLayout->addWidget(currentUser,2,0,1,4);
+    headerLayout->addWidget(currentUser,2,0,1,3);
+    logoutButton = new QPushButton("logout");
+    headerLayout->addWidget(logoutButton,2,3,1,1);
 
 	QFrame* myFrame = new QFrame();
 	myFrame->setFrameShape(QFrame::HLine);
@@ -37,6 +39,10 @@ MainWindow::MainWindow(RedebotDatabase* data){
 	QScrollArea *scroll = new QScrollArea;
 	scroll->setWidget(stackedWidget);
 	scroll->setWidgetResizable(true);
+	scroll->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+	scroll->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+	scroll->setMaximumWidth(300);
+	scroll->setMinimumHeight(370);
 
 	contentLayout->addWidget(scroll);
 	//contentLayout->addWidget(stackedWidget);
@@ -44,26 +50,13 @@ MainWindow::MainWindow(RedebotDatabase* data){
 	welcomePageLayout = new QGridLayout();
 
 	welcomePageWidget->setLayout(welcomePageLayout);
-		content = new QLabel("hello world, welcome to Redebot, \n USC's first CS Major Assistant");
-		content->setSizePolicy(QSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed));
-	//welcomePageWidget->setMinimumHeight(350);
-	    content->setMinimumHeight(350);
-	 //   content->setMaximumWidth(100);
-	welcomePageLayout->addWidget(content,2,0,1,1);
-
+	content = new QLabel("<h1><b>hello world</b></h1> <p> welcome to Redebot, <p> USC's first CS Major Assistant");
+	content->setAlignment(Qt::AlignCenter);
+	welcomePageLayout->addWidget(content,0,0,1,1);
+	gradesPageLayout = new QGridLayout(gradesPageWidget);
 	
-	//overallLayout->addWidget(stackedWidget,2,0,4,4);
-	
-	gradesPageLayout = new QGridLayout();
-	gradesPageWidget->setLayout(gradesPageLayout);
-	
-	
-	//gradesPageWidget->QScrollArea::setWidget(gradesPageLayout);
-	gradesLabel = new QLabel("hey\n how's it goingheyhey\n how's it goinghey\n how's it goinghey\n how's it goinghey\n how's it goinghey\n how's it goinghey\n how's it goinghey\n how's it going\n how's it goinghey\n how's it goinghey\n how's it goinghey\n how's it goinghey\n how's it goinghey\n how's it goinghey\n how's it goinghey\n how's it goinghey\n how's it goinghey\n how's it goinghey\n how's it goinghey\n how's it goinghey\n how's it goinghey\n how's it going");
-
-	//	gradesLabel->setSizePolicy(QSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed));
-	 //   gradesLabel->setMinimumHeight(350);
-    gradesPageLayout->addWidget(gradesLabel,0,0,1,1);
+	gradesLabel = new QLabel("CS104: <h1>A</h1> at 98.3 %%");
+    gradesPageLayout->addWidget(gradesLabel,0,0,7,7);
 
 
 
@@ -73,7 +66,7 @@ MainWindow::MainWindow(RedebotDatabase* data){
     	officeHoursLabel->setSizePolicy(QSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed));
     officeHoursPageLayout->addWidget(officeHoursLabel);
 
-
+    connect(logoutButton,SIGNAL(clicked()),this,SLOT(logoutlogin()));
     connect(viewGradesButton, SIGNAL(clicked()),this, SLOT(displayGradesPage()));
     connect(viewOfficeHoursButton, SIGNAL(clicked()),this, SLOT(displayOfficeHoursPage()));
 
@@ -95,4 +88,32 @@ void MainWindow::displayHomePage(){
 }
 void MainWindow::displayOfficeHoursPage(){
 	stackedWidget->setCurrentIndex(2);
+}
+void MainWindow::logoutlogin(){
+	if(logoutButton->text() == "logout"){
+		logoutButton->setText("login");
+		currentUser->setText("<i>You are currently not signed in</i>");
+	}else if(logoutButton->text() == "login"){
+		loginWindowDisplay();
+	// 	logoutButton->setText("logout");
+	// 	currentUser->setText("<i>You are currently not signed in</i>");
+	// 
+	}	
+}
+void MainWindow::loginWindowDisplay(){
+	loginWindow = new QWidget();
+	loginLayout = new QVBoxLayout();
+	usernameInput = new QLineEdit(); 
+	login = new QPushButton("login");
+	passwordInput = new QLineEdit();
+	loginLayout->addWidget(usernameInput);
+	loginLayout->addWidget(passwordInput)
+	filenameLayout->addWidget(login);
+
+	filenameWindow->setLayout(filenameLayout);
+	filenameWindow->setWindowModality(Qt::ApplicationModal);
+	filenameWindow->show();
+
+	connect(login, SIGNAL(clicked()), this, SLOT(hide()));
+
 }
