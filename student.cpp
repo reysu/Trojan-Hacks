@@ -49,10 +49,9 @@ double Student::getGrade(string className){
     studentGrade = it->second;
   return studentGrade;
 }
-<<<<<<< HEAD
 /* Updates a Student/CP's rating */
-void Student::rate(vector<CP*> totalCPs, string CPname, int rating){
-  for(unsigned int i = 0; i < totalCPs.size(); i++)
+void Student::rate(vector<Student*> totalStudents, string CPname, int rating){
+  for(unsigned int i = 0; i < totalStudents.size(); i++)
   {
     if(totalStudents[i]->getName() == CPname)
     {
@@ -66,11 +65,12 @@ double Student::getRating(){
 }
 
 /* Allows you to make a reservation with a CP, only on same day*/
-void Student::makeReservation(string CPname, string className,
-  int hour, int min){
+void Student::makeReservation(map<int,vector<Student*> > totalTimes, string CPname, string className,
+  int time){
   // Check if student: student only feature
   if(isCP == false)
   {
+    map<int,vector<Student*> >::iterator it = find(time);
 
   }
 }
