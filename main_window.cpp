@@ -6,14 +6,16 @@ MainWindow::MainWindow(RedebotDatabase* data){
 	/*Header layout */
 	headerLayout = new QGridLayout();
 	welcomeLabel = new QLabel("Welcome to Redebot");
-	headerLayout->addWidget(welcomeLabel,0,0,1,4);
+	homeButton = new QPushButton("Home");
+	headerLayout->addWidget(homeButton,1,0,1,1);
+	headerLayout->addWidget(welcomeLabel,0,0,1,5);
 	titleFont.setBold(true);
     titleFont.setPointSize(25);
 	welcomeLabel->setFont(titleFont);
 	viewOfficeHoursButton = new QPushButton("View Office Hours");
-	headerLayout->addWidget(viewOfficeHoursButton,1,0,1,2);
+	headerLayout->addWidget(viewOfficeHoursButton,1,1,1,1);
 	viewGradesButton = new QPushButton("View Grades");
-	headerLayout->addWidget(viewGradesButton,1,2,1,2);
+	headerLayout->addWidget(viewGradesButton,1,3,1,1);
 
     captionFont.setPointSize(10);
     currentUser = new QLabel("<i>You are currently logged in as Eric Su</i>"); // WRITE FUNCTION THAT will detect whether or not user is logged in, and who is logged in
@@ -41,7 +43,7 @@ MainWindow::MainWindow(RedebotDatabase* data){
 	scroll->setWidgetResizable(true);
 	scroll->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
 	scroll->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-	scroll->setMaximumWidth(300);
+	scroll->setMaximumWidth(320);
 	scroll->setMinimumHeight(370);
 
 	contentLayout->addWidget(scroll);
@@ -53,10 +55,38 @@ MainWindow::MainWindow(RedebotDatabase* data){
 	content = new QLabel("<h1><b>hello world</b></h1> <p> welcome to Redebot, <p> USC's first CS Major Assistant");
 	content->setAlignment(Qt::AlignCenter);
 	welcomePageLayout->addWidget(content,0,0,1,1);
-	gradesPageLayout = new QGridLayout(gradesPageWidget);
+	//gradesPageLayout = new QGridLayout(gradesPageWidget);
+
+
+		productLayout = new QGridLayout();
+		productLabel = new QLabel("Classes             Grades");
+		//reviewLabel = new QLabel("Grades");
+		productListWidget = new QListWidget();
+		reviewListWidget = new QListWidget();
+		labelLayout = new QHBoxLayout();
+
+	    boldFont.setBold(true);
+	    boldFont.setPointSize(14);
+
+	    productLabel->setFont(boldFont);    
+	    reviewLabel->setFont(boldFont);
+	    labelLayout->addWidget(productLabel);
+//labelLayout->addWidget(reviewLabel);
+	   	productLayout->addLayout(labelLayout,0,0,1,1);
+	   
+	    productLayout->addWidget(reviewLabel,0,1,1,1); 
+	  
+	    productLayout->addWidget(productListWidget,1,0,1,1);
+	    productLayout->addWidget(reviewListWidget,1,1,1,1);
+	    gradesPageWidget->setLayout(productLayout);
+
+
+
+
+
 	
-	gradesLabel = new QLabel("CS104: <h1>A</h1> at 98.3 %%");
-    gradesPageLayout->addWidget(gradesLabel,0,0,7,7);
+//	gradesLabel = new QLabel("CS104: A at 98.3 %%");
+  //  gradesPageLayout->addWidget(gradesLabel,0,0,7,7);
 
 
 
@@ -105,7 +135,7 @@ void MainWindow::loginWindowDisplay(){
 	loginWindow = new QWidget();
 	loginLayout = new QVBoxLayout();
 	subLayoutr1 = new QHBoxLayout();
-	subLayoutr1 = new QHBoxLayout();
+	subLayoutr2 = new QHBoxLayout();
 	inputUsernameLabel = new QLabel("username");
 	inputPasswordLabel = new QLabel("password");
 	usernameInput = new QLineEdit(""); 
@@ -124,6 +154,13 @@ void MainWindow::loginWindowDisplay(){
 	loginWindow->setWindowModality(Qt::ApplicationModal);
 	loginWindow->show();
 
-	connect(signinButton, SIGNAL(clicked()), this, SLOT(hide()));
+	connect(signinButton, SIGNAL(clicked()), this, SLOT(quitloginDisplay()));
 
+}
+void MainWindow::quitloginDisplay(){
+	loginWindow->hide();
+	if(usernameInput->text() == "esu"){
+		logoutButton->setText("logout");
+		currentUser->setText("Welcome back, Eric Su");
+	}
 }
