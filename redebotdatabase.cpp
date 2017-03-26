@@ -15,7 +15,7 @@ RedebotDatabase::~RedebotDatabase()
 	}
 }
 
-void RedebotDatabase::addUser(Student* student)
+void RedebotDatabase::addStudent(Student* student)
 {
 	totalStudents.push_back(student);
 }

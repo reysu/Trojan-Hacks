@@ -1,11 +1,12 @@
 #include "student.h"
 
 Student::Student(int id,string studentName,
-  string user,string pass, vector<string> currentlyTaking){
+  string user,string pass, vector<string> currentlyTaking, vector<string> classesCping, bool isCP){
     idNumber = id;
     studentFullName = studentName;
     username = user;
     pass = pass;
+    isCP = isCP;
     //initialize the map of all classes
     csClasses["CSCI104"] = false;
     csClasses["CSCI170"] = false;
@@ -19,32 +20,47 @@ Student::Student(int id,string studentName,
         csClasses[currentlyTaking[i]] = true;
       }
     }
+
+    // If student is CP
+    if(isCP == true)
+    {
+      map<string,bool>::iterator it2 = cpClasses.begin();
+      for(unsigned int i=0; i < classesCping .size(); i++)
+      {
+        it = cpClasses.find(classesCping[i]);
+        if(it != cpClasses.end())
+        {  //class exists
+          cpClasses[classesCping[i]] = true;
+        }
+      }
+    }
 }
 
-/* Given an input password, returns true if user can log in */
+/* Given an input password, returns true if user/CP can log in */
 bool Student::isLogInValid(string inputPassword){
   return inputPassword == password;
 }
 /* Returns the student's percentage for a given class (Unscaled)*/
 double Student::getGrade(string className){
-  map<string, double>::iterator it = totalCSGrades.find(className);
-  double studentGrade = 0.0;
-  if(it != totalCSGrades.end()){//found
+  // Everyone is student and gets grades (CP could be taking 104, 170 courses)
+    map<string, double>::iterator it = totalCSGrades.find(className);
+    double studentGrade = 0.0;
+    if(it != totalCSGrades.end()){ // found
     studentGrade = it->second;
-  }
   return studentGrade;
 }
-/* Updates a CP's rating */
-// void Student::rateCP(vector<CP*> totalCPs, string CPname, int rating){
-//   for(unsigned int i = 0; i < totalCPs.size(); i++)
-//   {
-//     if(totalCPs[i]->getName() == CPname)
-//     {
-//       totalCPs[i]->setRating(rating);
-//     }
-//   }
-// }
-/* Returns student's current Average Rating */
+<<<<<<< HEAD
+/* Updates a Student/CP's rating */
+void Student::rate(vector<CP*> totalCPs, string CPname, int rating){
+  for(unsigned int i = 0; i < totalCPs.size(); i++)
+  {
+    if(totalStudents[i]->getName() == CPname)
+    {
+      totalStudents[i]->setRating(rating);
+    }
+  }
+}
+/* Returns student/CP's current Average Rating */
 double Student::getRating(){
     return double(totalRatings)/numRatings;
 }
@@ -52,26 +68,30 @@ double Student::getRating(){
 /* Allows you to make a reservation with a CP, only on same day*/
 void Student::makeReservation(string CPname, string className,
   int hour, int min){
+  // Check if student: student only feature
+  if(isCP == false)
+  {
 
+  }
 }
 
-/* returns student's ID */
+/* returns student/CP's ID */
 int Student::getID()
 {
   return idNumber;
 }
 
-/* Returns student's username */
+/* Returns student/CP's username */
 string Student::getUsername(){
   return username;
 }
 
-/* Get name of student */
+/* Get name of student/CP */
 string Student::getName() {
   return studentFullName;
 }
 
-/* Set rating of student */
+/* Set rating of student/CP */
 void Student::setRating(int rating) {
   totalRatings += rating;
   numRatings++;
