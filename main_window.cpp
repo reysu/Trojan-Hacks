@@ -23,16 +23,24 @@ MainWindow::MainWindow(RedebotDatabase* data){
 	myFrame->setFrameShape(QFrame::HLine);
 	const int NUMBER_OF_COLUMNS_IN_GRID = 4;
 	overallLayout->addWidget(myFrame, 1, 0, 1, NUMBER_OF_COLUMNS_IN_GRID);
+	contentLayout = new QGridLayout();
 
 
+	content = new QLabel("hello world");
+	content->setSizePolicy(QSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed));
+    content->setMinimumHeight(350);
+	contentLayout->addWidget(content,2,0,1,1);
+	overallLayout->addLayout(contentLayout,2,0,4,4);
 
 //	currentClass = new QComboBox(this);
-
-
-
 
 	overallLayout->addLayout(headerLayout,0,0,1,4);
 	setLayout(overallLayout);
 }
-
 MainWindow::~MainWindow(){}
+
+MainWindow::displayGradesPage(){
+
+
+	
+}

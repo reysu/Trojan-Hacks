@@ -28,6 +28,7 @@ public:
 	
 	MainWindow(RedebotDatabase* data);
 	~MainWindow();
+	displayGradesPage();
 
 private slots:
 	
@@ -45,4 +46,12 @@ private:
 	QFont captionFont;
 	QLabel* currentUser;
 
+/* Content Layout*/
+	QGridLayout* contentLayout;
+	QLabel* content;
+/*pages*/
+
+	QWidget* gradesPage;
+
 };
+
