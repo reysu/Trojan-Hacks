@@ -75,8 +75,12 @@ private:
 	QTableWidget* officeHoursTable;
 /*loginWindow*/
 	QWidget *loginWindow;
-	QHBoxLayout* loginLayout;
-	QPushButton* login;
+	QVBoxLayout* loginLayout;
+	QHBoxLayout* subLayoutr1;
+	QHBoxLayout* subLayoutr2;
+	QLabel* inputUsernameLabel;
+	QLabel* inputPasswordLabel;
+	QPushButton* signinButton;
 	QLineEdit* usernameInput;
 	QLineEdit* passwordInput;
 
