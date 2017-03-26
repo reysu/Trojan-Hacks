@@ -15,7 +15,7 @@ class Student{
     /* Returns student's grade for given class(Uncurved)*/
     double getGrade(string className);
     /* Allows a student to rate a CP */
-    void rateCP(string CPname, int rating);
+    void rateCP(set<string> totalCps, string CPname, int rating);
     /* Returns the student's average rating */
     double getRating();
     /* Allows student to make reservation with a CP */
@@ -24,8 +24,14 @@ class Student{
     int getID();
     /* returns student's username */
     string getUsername();
-    /* Add new rating for student */
-    void submitRating(int);
+    /* Get name of student */
+    string getName();
+    /* Set rating of student */
+    void setRating(int rating);
+
+    /* Add grade of student for each class */
+    // void addGrade(string, int);
+
   private:
     /*map of all CS classes, and an bool to indicate whether or not they are
     currently taking that class */
@@ -34,7 +40,7 @@ class Student{
     string password;
     int idNumber;
     string studentFullName;
-    map<string, double> totalCSGrades;
+    map<string, double> totalCSGrades; // map of class name and grade for that class
     int totalRatings;
     int numRatings;
 };

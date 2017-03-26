@@ -20,6 +20,7 @@ Student::Student(int id,string studentName,
       }
     }
 }
+
 /* Given an input password, returns true if user can log in */
 bool Student::isLogInValid(string inputPassword){
   return inputPassword == password;
@@ -33,14 +34,19 @@ double Student::getGrade(string className){
   }
   return studentGrade;
 }
-/* Should update a CP's rating */
-void Student::rateCP(string CPname, int rating){
-
+/* Updates a CP's rating */
+void Student::rateCP(vector<CP*> totalCPs, string CPname, int rating){
+  for(int i = 0; i < totalCPs.size(); i++)
+  {
+    if(totalCPs[i]->getName() == CPname)
+    {
+      totalCPs[i]->setRating(rating);
+    }
+  }
 }
 /* Returns student's current Average Rating */
 double Student::getRating(){
     return double(totalRatings)/numRatings;
-
 }
 
 /* Allows you to make a reservation with a CP, only on same day*/
@@ -48,15 +54,25 @@ void Student::makeReservation(string CPname, string className,
   int hour, int min){
 
 }
+
+/* returns student's ID */
+int Student::getID()
+{
+  return idNumber;
+}
+
 /* Returns student's username */
 string Student::getUsername(){
   return username;
 }
-/* CP's will be able to call this function to give a student a rating */
-void Student::submitRating(int rating){
-  if(rating < 0 || rating > 5){ //invalid rating
-    return;
-  }
+
+/* Get name of student */
+string Student::getName() {
+  return studentFullName;
+}
+
+/* Set rating of student */
+void Student::setRating(int rating) {
   totalRatings += rating;
   numRatings++;
 }
