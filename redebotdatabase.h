@@ -20,7 +20,7 @@ public:
 
 private:
 	// Vector of total students
-	std::vector<Student*> totalUsers;
+	std::vector<Student*> totalStudents;
 	// Vector of all classes: CS103, CS109, CS104, CS170
 	std::vector<string> totalClasses;
 
