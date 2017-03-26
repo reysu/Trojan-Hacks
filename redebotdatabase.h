@@ -24,6 +24,8 @@ private:
 	// Vector of all classes: CS103, CS109, CS104, CS170
 	std::vector<string> totalClasses;
 
+	map<int,vector<Student*> > totalTimes;  // appoint times: map of times to CPs available during those times (Military Time)
+
 };
 
 #endif

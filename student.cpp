@@ -1,12 +1,12 @@
 #include "student.h"
 
-Student::Student(int id,string studentName,
-  string user,string pass, vector<string> currentlyTaking, vector<string> classesCping, bool isCP){
+Student::Student(int id,string studentName, string user,string pass, vector<string> currentlyTaking, vector<string> classesCping, bool isCP){
     idNumber = id;
     studentFullName = studentName;
     username = user;
     pass = pass;
     isCP = isCP;
+    isAvailable = isAvailable;
     //initialize the map of all classes
     csClasses["CSCI104"] = false;
     csClasses["CSCI170"] = false;
@@ -45,10 +45,11 @@ double Student::getGrade(string className){
   // Everyone is student and gets grades (CP could be taking 104, 170 courses)
     map<string, double>::iterator it = totalCSGrades.find(className);
     double studentGrade = 0.0;
-    if(it != totalCSGrades.end()){ // found
-    studentGrade = it->second;
+    if(it != totalCSGrades.end())
+    { // found
+      studentGrade = it->second;
+    }
   return studentGrade;
-}
 }
 /* Updates a Student/CP's rating */
 void Student::rate(vector<Student*> totalStudents, string name, int rating){
@@ -66,25 +67,27 @@ double Student::getRating(){
 }
 
 /* Allows you to make a reservation with a CP, only on same day*/
-/*
 void Student::makeReservation(map<int,vector<Student*> > totalTimes, string CPname, string className,
   int time){
   // Check if student: student only feature
   if(isCP == false)
   {
-    map<int,vector<Student*> >::iterator it = find(time);
+    map<int,vector<Student*> >::iterator it = totalTimes.find(time);
     if(it != totalTimes.end())
     {
       vector<Student*> temp = it->second;
       for(int i = 0; i < temp.size(); i++)
       {
-        if()
+        map<int, bool>::iterator it2 = isAvailable.find(time);
+        if(temp[i]->getName() == CPname && it2->second == true)
+        {
+          appointmentTimes.push_back(time);
+          it2->second == false;
+        }
       }
     }
-
   }
 }
-*/
 
 /* returns student/CP's ID */
 int Student::getID()

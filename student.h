@@ -9,8 +9,7 @@ using namespace std;
 
 class Student{
   public:
-    Student(int id,string studentName,string user,string pass,
-    vector<string> currentlyTaking, vector<string> classesCping, bool isCP);
+    Student(int id,string studentName,string user,string pass, vector<string> currentlyTaking, vector<string> classesCping, bool isCP);
     /* Checks if log in password is valid */
     bool isLogInValid(string inputPassword);
     /* Returns student's grade for given class(Uncurved) */
@@ -20,7 +19,7 @@ class Student{
     /* Returns the student/CP's average rating */
     double getRating();
     /* Allows student to make reservation with a CP */
-    // void makeReservation(map<int,vector<Student*> > totalTimes, string CPname, string className, int time);
+    void makeReservation(map<int,vector<Student*> > totalTimes, string CPname, string className, int time);
     /* returns student/CP's ID */
     int getID();
     /* returns student/CP's username */
@@ -32,6 +31,9 @@ class Student{
 
     /* Add grade of student for each class */
     // void addGrade(string, int);
+
+    // Public data members
+    map<int, bool> isAvailable; // available during this time for CPs
 
   private:
     /*map of all CS classes, and a bool to indicate whether or not they are
@@ -49,5 +51,4 @@ class Student{
     int numRatings;
     bool isCP; // true if CP, false if Student
     vector<int> appointmentTimes; // Times for student appointments OR office hours for CPs (Military Time)
-    bool isAvailable; // available during this time for CPs
 };
