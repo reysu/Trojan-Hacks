@@ -56,7 +56,7 @@ RedebotDatabase::RedebotDatabase() {
 	vector<Student*> alexTimes1;
 	alexTimes1.push_back(nick);
 	alexTimes1.push_back(alex);
-	totalTimes.insert(make_pair(900, alexTiems1));
+	totalTimes.insert(make_pair(900, alexTimes1));
 
 	// 109 CP #1: John Doe
 	vector<string> johnClasses;
