@@ -4,6 +4,7 @@
 #include <set>
 #include <vector>
 #include <map>
+#include "cp.h"
 using namespace std;
 
 class Student{
@@ -15,7 +16,7 @@ class Student{
     /* Returns student's grade for given class(Uncurved)*/
     double getGrade(string className);
     /* Allows a student to rate a CP */
-    void rateCP(set<string> totalCps, string CPname, int rating);
+    void rateCP(vector<CP*> totalCPs, string CPname, int rating);
     /* Returns the student's average rating */
     double getRating();
     /* Allows student to make reservation with a CP */
