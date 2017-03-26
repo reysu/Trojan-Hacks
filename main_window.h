@@ -20,6 +20,7 @@
 	#include <QStackedWidget>
 	#include "redebotdatabase.h"
 	#include <QScrollArea>
+	#include <QStackedWidget>
 
 class MainWindow : public QWidget
 {
@@ -28,9 +29,12 @@ public:
 	
 	MainWindow(RedebotDatabase* data);
 	~MainWindow();
-	void displayGradesPage();
+
 
 private slots:
+	void displayGradesPage();
+	void displayHomePage();
+	void displayOfficeHoursPage();
 	
 private:
 /*Overall Layout*/
@@ -48,10 +52,21 @@ private:
 
 /* Content Layout*/
 	QGridLayout* contentLayout;
-	QLabel* content;
+	
 /*pages*/
 	QStackedWidget *stackedWidget;
-	QWidget* gradesPage;
+	QWidget *welcomePageWidget;
+	QWidget *gradesPageWidget;
+	QWidget *officeHoursPageWidget;
+/*welcome page*/
+	QGridLayout* welcomePageLayout;
+	QLabel* content;
 
+/*grades page*/
+	QGridLayout* gradesPageLayout;
+	QLabel* gradesLabel;
+/*office hours page*/
+	QVBoxLayout* officeHoursPageLayout;
+	QLabel* officeHoursLabel;
 };
 

@@ -25,39 +25,64 @@ MainWindow::MainWindow(RedebotDatabase* data){
 	overallLayout->addWidget(myFrame, 1, 0, 1, NUMBER_OF_COLUMNS_IN_GRID);
 	contentLayout = new QGridLayout();
 
+	//initialling stacked pages so that content changes but not the header
+	welcomePageWidget = new QWidget;
+    gradesPageWidget = new QWidget;
+    officeHoursPageWidget = new QWidget;
+	stackedWidget = new QStackedWidget;
+	stackedWidget->addWidget(welcomePageWidget);
+    stackedWidget->addWidget(gradesPageWidget);
+    stackedWidget->addWidget(officeHoursPageWidget);
+	
+	contentLayout->addWidget(stackedWidget);
 
-	QWidget *firstPageWidget = new QWidget;
-    QWidget *secondPageWidget = new QWidget;
-    QWidget *thirdPageWidget = new QWidget;
+	welcomePageLayout = new QGridLayout();
 
-	stackedWidget->addWidget(firstPageWidget);
-    stackedWidget->addWidget(secondPageWidget);
-    stackedWidget->addWidget(thirdPageWidget);
+	welcomePageWidget->setLayout(welcomePageLayout);
+		content = new QLabel("hello world, welcome to Redebot, \n USC's first CS Major Assistant");
+		content->setSizePolicy(QSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed));
+	    content->setMinimumHeight(350);
+	 //   content->setMaximumWidth(100);
+	welcomePageLayout->addWidget(content,2,0,1,1);
+
+	
+	//overallLayout->addWidget(stackedWidget,2,0,4,4);
+	
+	gradesPageLayout = new QGridLayout();
+	gradesPageWidget->setLayout(gradesPageLayout);
+	gradesLabel = new QLabel("hey");
+	//	gradesLabel->setSizePolicy(QSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed));
+	 //   gradesLabel->setMinimumHeight(350);
+    gradesPageLayout->addWidget(gradesLabel,0,0,1,1);
 
 
-    firstPageWidget->setLayout(contentLayout);
-	content = new QLabel("hello world");
-	content->setSizePolicy(QSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed));
-    content->setMinimumHeight(350);
-	contentLayout->addWidget(content,2,0,1,1);
-	//overallLayout->addLayout(contentLayout,2,0,4,4);
-	overallLayout->addWidget(stackedWidget,2,0,4,4);
+
+    officeHoursPageLayout = new QVBoxLayout();
+    officeHoursPageWidget->setLayout(officeHoursPageLayout);
+    	officeHoursLabel = new QLabel("See all office hours");
+    	officeHoursLabel->setSizePolicy(QSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed));
+    officeHoursPageLayout->addWidget(officeHoursLabel);
+
+
+    connect(viewGradesButton, SIGNAL(clicked()),this, SLOT(displayGradesPage()));
+    connect(viewOfficeHoursButton, SIGNAL(clicked()),this, SLOT(displayOfficeHoursPage()));
 
 
 
-
-
-//	currentClass = new QComboBox(this);
-
+    overallLayout->addLayout(contentLayout,2,0,4,4);
 	overallLayout->addLayout(headerLayout,0,0,1,4);
 	setLayout(overallLayout);
 }
 MainWindow::~MainWindow(){}
 
 void MainWindow::displayGradesPage(){
-//	displayGradesPage = new QWidget();
-//	QWidget *firstPageWidget = new QWidget;
+    stackedWidget->setCurrentIndex(1); 
+}
 
-
-
+void MainWindow::displayHomePage(){
+    stackedWidget->setCurrentIndex(0); 
+      
+}
+void MainWindow::displayOfficeHoursPage(){
+	stackedWidget->setCurrentIndex(2);
 }
