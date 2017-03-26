@@ -57,9 +57,9 @@ MainWindow::MainWindow(RedebotDatabase* data){
 	welcomePageLayout->addWidget(content,0,0,1,1);
 	//gradesPageLayout = new QGridLayout(gradesPageWidget);
 
-
+	QPushButton* updateGrade = new QPushButton("add score");
 		gradesPageLayout = new QGridLayout(); 
-		gradesLabel = new QLabel("           Classes \t              Grades");
+		gradesLabel = new QLabel("  Class \t                Grade");
 		//reviewLabel = new QLabel("Grades");
 		classesListWidget = new QListWidget();
 		gradesListWidget = new QListWidget();
@@ -71,13 +71,15 @@ MainWindow::MainWindow(RedebotDatabase* data){
 	    gradesLabel->setFont(boldFont);    
 	//    reviewLabel->setFont(boldFont);
 	    labelLayout->addWidget(gradesLabel);
+
+	    labelLayout->addWidget(updateGrade);
 //labelLayout->addWidget(reviewLabel);
 	   	gradesPageLayout->addLayout(labelLayout,0,0,1,4);
 	   
 	  //  productLayout->addWidget(reviewLabel,0,1,1,1); 
-
+	classesListWidget->addItem("CSCI-103: Introduction \n to Programming \n ");
 	  	classesListWidget->addItem("CSCI-109: Introduction \n to Computer Science\n");
-	  	classesListWidget->addItem("CSCI-103: Introduction \n to Programming \n ");
+	  
 	  	gradesListWidget->addItem("You currently have a: A \n at a 93.6 %% \n ");
 	  	gradesListWidget->addItem("You currently have a: C \n at a 74.2 %% \n");
 
@@ -97,14 +99,24 @@ MainWindow::MainWindow(RedebotDatabase* data){
 
     officeHoursPageLayout = new QVBoxLayout();
     officeHoursPageWidget->setLayout(officeHoursPageLayout);
-    	officeHoursLabel = new QLabel("Next CP is coming in: 33 minutes");
+    	officeHoursLabel = new QLabel("Next CP is coming in: 33 minutes \n ETA wait time from queue: 75 minutes");
     	//officeHoursLabel->setSizePolicy(QSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed));
-    QLabel* signupsheet = newQLabel("Signup sheet");
+
     QListWidget* signuplist = new QListWidget();
-
-
-    QPushButton* requestReservation = new QPushButton('request reservation');
-    officeHoursPageLayout->addWidget(officeHoursLabel);
+    QLabel* signupsheet = new QLabel("Signup sheet");
+    signupsheet->setFont(boldFont);
+    signuplist->addItem("\n Eric Su");
+      signuplist->addItem("\n Eric Yu");
+        signuplist->addItem("\n Michael Shindler");
+          signuplist->addItem("\n Mark Redekopp");
+            signuplist->addItem("\n Nikias");
+              signuplist->addItem("\n Donald");
+    QPushButton* requestReservation = new QPushButton("request reservation");
+     officeHoursPageLayout->addWidget(officeHoursLabel);
+    officeHoursPageLayout->addWidget(signupsheet);
+officeHoursPageLayout->addWidget(signuplist);
+officeHoursPageLayout->addWidget(requestReservation);
+   
 
     connect(logoutButton,SIGNAL(clicked()),this,SLOT(logoutlogin()));
     connect(viewGradesButton, SIGNAL(clicked()),this, SLOT(displayGradesPage()));
