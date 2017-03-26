@@ -1,7 +1,11 @@
 #ifndef REDEBOTDATABASE_H
 #define REDEBOTDATABASE_H
 
+#include "student.h"
+#include "cp.h"
+
 #include <map>
+#include <vector>
 
 class RedebotDatabase {
 public:
@@ -9,14 +13,20 @@ public:
 	~RedebotDatabase();
 
 	void addStudent(Student* student);
+	void addCP(CP* cp);
 	void addClass(string name);
 
-private:
-	// Set of total students
-	std::set<Student*> totalStudents;
-	// Set of all classes: CS103, CS109, CS104, CS170
-	std::set<string> totalClasses;
+	vector<Student*> getTotalStudents();
+	vector<CP*> getTotalCPs();
+	vector<string> getTotalClasses();
 
+private:
+	// Vector of total students
+	std::vector<Student*> totalStudents;
+	// Vector of total CPs
+	std::vector<CP*> totalCPs;
+	// Vector of all classes: CS103, CS109, CS104, CS170
+	std::vector<string> totalClasses;
 
 };
 
