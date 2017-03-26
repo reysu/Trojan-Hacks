@@ -13,18 +13,14 @@ public:
 	~RedebotDatabase();
 
 	void addStudent(Student* student);
-	void addCPs(CP* cp);
 	void addClass(string name);
 
 	vector<Student*> getTotalStudents();
-	vector<CP*> getTotalCPs();
 	vector<string> getTotalClasses();
 
 private:
 	// Vector of total students
-	std::vector<Student*> totalStudents;
-	// Vector of total CPs
-	std::vector<CP*> totalCPs;
+	std::vector<Student*> totalUsers;
 	// Vector of all classes: CS103, CS109, CS104, CS170
 	std::vector<string> totalClasses;
 
