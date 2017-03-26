@@ -49,6 +49,7 @@ double Student::getGrade(string className){
     studentGrade = it->second;
   return studentGrade;
 }
+<<<<<<< HEAD
 /* Updates a Student/CP's rating */
 void Student::rate(vector<CP*> totalCPs, string CPname, int rating){
   for(unsigned int i = 0; i < totalCPs.size(); i++)

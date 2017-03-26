@@ -4,7 +4,7 @@
 #include <set>
 #include <vector>
 #include <map>
-#include "cp.h"
+
 using namespace std;
 
 class Student{
