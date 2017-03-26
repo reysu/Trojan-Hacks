@@ -26,11 +26,26 @@ MainWindow::MainWindow(RedebotDatabase* data){
 	contentLayout = new QGridLayout();
 
 
+	QWidget *firstPageWidget = new QWidget;
+    QWidget *secondPageWidget = new QWidget;
+    QWidget *thirdPageWidget = new QWidget;
+
+	stackedWidget->addWidget(firstPageWidget);
+    stackedWidget->addWidget(secondPageWidget);
+    stackedWidget->addWidget(thirdPageWidget);
+
+
+    firstPageWidget->setLayout(contentLayout);
 	content = new QLabel("hello world");
 	content->setSizePolicy(QSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed));
     content->setMinimumHeight(350);
 	contentLayout->addWidget(content,2,0,1,1);
-	overallLayout->addLayout(contentLayout,2,0,4,4);
+	//overallLayout->addLayout(contentLayout,2,0,4,4);
+	overallLayout->addWidget(stackedWidget,2,0,4,4);
+
+
+
+
 
 //	currentClass = new QComboBox(this);
 
@@ -39,8 +54,10 @@ MainWindow::MainWindow(RedebotDatabase* data){
 }
 MainWindow::~MainWindow(){}
 
-MainWindow::displayGradesPage(){
+void MainWindow::displayGradesPage(){
+//	displayGradesPage = new QWidget();
+//	QWidget *firstPageWidget = new QWidget;
 
 
-	
+
 }

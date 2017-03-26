@@ -28,7 +28,7 @@ public:
 	
 	MainWindow(RedebotDatabase* data);
 	~MainWindow();
-	displayGradesPage();
+	void displayGradesPage();
 
 private slots:
 	
@@ -50,7 +50,7 @@ private:
 	QGridLayout* contentLayout;
 	QLabel* content;
 /*pages*/
-
+	QStackedWidget *stackedWidget;
 	QWidget* gradesPage;
 
 };
