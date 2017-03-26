@@ -35,15 +35,15 @@ double Student::getGrade(string className){
   return studentGrade;
 }
 /* Updates a CP's rating */
-void Student::rateCP(vector<CP*> totalCPs, string CPname, int rating){
-  for(unsigned int i = 0; i < totalCPs.size(); i++)
-  {
-    if(totalCPs[i]->getName() == CPname)
-    {
-      totalCPs[i]->setRating(rating);
-    }
-  }
-}
+// void Student::rateCP(vector<CP*> totalCPs, string CPname, int rating){
+//   for(unsigned int i = 0; i < totalCPs.size(); i++)
+//   {
+//     if(totalCPs[i]->getName() == CPname)
+//     {
+//       totalCPs[i]->setRating(rating);
+//     }
+//   }
+// }
 /* Returns student's current Average Rating */
 double Student::getRating(){
     return double(totalRatings)/numRatings;
