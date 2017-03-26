@@ -75,7 +75,12 @@ MainWindow::MainWindow(RedebotDatabase* data){
 	   	gradesPageLayout->addLayout(labelLayout,0,0,1,4);
 	   
 	  //  productLayout->addWidget(reviewLabel,0,1,1,1); 
-	  
+
+	  	classesListWidget->addItem("CSCI-109: Introduction \n to Computer Science\n");
+	  	classesListWidget->addItem("CSCI-103: Introduction \n to Programming \n ");
+	  	gradesListWidget->addItem("You currently have a: A \n at a 93.6 %% \n ");
+	  	gradesListWidget->addItem("You currently have a: C \n at a 74.2 %% \n");
+
 	    gradesPageLayout->addWidget(classesListWidget,1,0,5,2);
 	    gradesPageLayout->addWidget(gradesListWidget,1,2,5,2);
 	    gradesPageWidget->setLayout(gradesPageLayout);
@@ -92,12 +97,18 @@ MainWindow::MainWindow(RedebotDatabase* data){
 
     officeHoursPageLayout = new QVBoxLayout();
     officeHoursPageWidget->setLayout(officeHoursPageLayout);
-    	officeHoursLabel = new QLabel("See all office hours");
-    	officeHoursLabel->setSizePolicy(QSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed));
+    	officeHoursLabel = new QLabel("Next CP is coming in: 33 minutes");
+    	//officeHoursLabel->setSizePolicy(QSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed));
+    QLabel* signupsheet = newQLabel("Signup sheet");
+    QListWidget* signuplist = new QListWidget();
+
+
+    QPushButton* requestReservation = new QPushButton('request reservation');
     officeHoursPageLayout->addWidget(officeHoursLabel);
 
     connect(logoutButton,SIGNAL(clicked()),this,SLOT(logoutlogin()));
     connect(viewGradesButton, SIGNAL(clicked()),this, SLOT(displayGradesPage()));
+    connect(homeButton, SIGNAL(clicked()),this, SLOT(displayHomePage()));
     connect(viewOfficeHoursButton, SIGNAL(clicked()),this, SLOT(displayOfficeHoursPage()));
 
 
