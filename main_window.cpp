@@ -64,22 +64,15 @@ MainWindow::MainWindow(RedebotDatabase* data){
     	officeHoursLabel->setSizePolicy(QSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed));
     officeHoursPageLayout->addWidget(officeHoursLabel);
 
-    // Display office hours in table form
     /*
-    QSqlTableModel *model = new QSqlTableModel;
-    model->setTable("Office Hours");
-    model->select();
-    model->setHeaderData(0, Qt::Horizontal, tr("Time"));
-    model->setHeaderData(1, Qt::Horizontal, tr("Salary"));
-
-    QTableView *view = new QTableView;
-    officeHoursPageLayout->addLayout(view);
-    view->setModel(model);
-    view->show();
-    */
-
+    // Display office hours in table form
     officeHoursTable = new QTableWidget;
     officeHoursPageLayout->addWidget(officeHoursTable);
+    const QStringList officeHoursLabels = new QStringList;
+    officeHoursLabels.append("Times");
+    officeHoursLabels.append("CPs");
+    officeHoursTable->setHorizontalHeaderLabels(officeHoursLabels);
+    */
 
     connect(logoutButton,SIGNAL(clicked()),this,SLOT(logoutlogin()));
     connect(viewGradesButton, SIGNAL(clicked()),this, SLOT(displayGradesPage()));
