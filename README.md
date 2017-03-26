@@ -19,10 +19,3 @@ Users are Students and CPs
 5. Students can make appointments with CPs. CP office hours are split into half
 scheduled and half walk-ins.
 
-6. Frequently Asked Questions Search
-
-7. If users want to ask a question through this application, they are linked to Piazza.
-
-8. Students can calculate their grades for certain classes by selecting their grades
-for specific assignments in these classes. Their grades are shown in raw percentage 
-score and weighted by certain classes' (CS104, CS170) guaranteed minimum curves.
