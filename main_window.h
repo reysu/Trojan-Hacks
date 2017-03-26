@@ -37,6 +37,7 @@ private slots:
 	void displayOfficeHoursPage();
 	void logoutlogin();
 	void loginWindowDisplay();
+	void quitloginDisplay();
 private:
 /*Overall Layout*/
 	RedebotDatabase* ds;
@@ -51,6 +52,7 @@ private:
 	QFont captionFont;
 	QLabel* currentUser;
 	QPushButton* logoutButton;
+	QPushButton* homeButton;
 
 /* Content Layout*/
 	QGridLayout* contentLayout;
@@ -80,6 +82,15 @@ private:
 	QPushButton* signinButton;
 	QLineEdit* usernameInput;
 	QLineEdit* passwordInput;
+
+	/* Product and Review Display Layouts */ 
+	QGridLayout* productLayout;
+	QHBoxLayout* labelLayout;
+	QLabel* productLabel;
+	QLabel* reviewLabel;
+	QListWidget* productListWidget;
+	QListWidget* reviewListWidget;
+	QFont boldFont;
 
 };
 
