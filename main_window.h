@@ -69,8 +69,12 @@ private:
 	QLabel* content;
 
 /*grades page*/
-	QGridLayout* gradesPageLayout;
 	QLabel* gradesLabel;
+	QGridLayout* gradesPageLayout;
+	QHBoxLayout* labelLayout;
+	QListWidget* gradesListWidget;
+	QListWidget* classesListWidget;
+	QFont boldFont;
 /*office hours page*/
 	QVBoxLayout* officeHoursPageLayout;
 	QLabel* officeHoursLabel;
@@ -86,14 +90,8 @@ private:
 	QLineEdit* usernameInput;
 	QLineEdit* passwordInput;
 
-	/* Product and Review Display Layouts */ 
-	QGridLayout* productLayout;
-	QHBoxLayout* labelLayout;
-	QLabel* productLabel;
-	QLabel* reviewLabel;
-	QListWidget* productListWidget;
-	QListWidget* reviewListWidget;
-	QFont boldFont;
+
+	
 
 };
 
