@@ -36,7 +36,7 @@ double Student::getGrade(string className){
 }
 /* Updates a CP's rating */
 void Student::rateCP(vector<CP*> totalCPs, string CPname, int rating){
-  for(int i = 0; i < totalCPs; i++)
+  for(int i = 0; i < totalCPs.size(); i++)
   {
     if(totalCPs[i]->getName() == CPname)
     {

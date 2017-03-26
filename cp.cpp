@@ -29,7 +29,7 @@ bool CP::isLogInValid(string inputPassword){
 /* CP's will be able to call this function to give a student a rating */
 void CP::rateStudent(vector<Student*> totalStudents, string studentname, int rating)
 {
-  for(int i = 0; i < totalStudents; i++)
+  for(int i = 0; i < totalStudents.size(); i++)
   {
   	if(totalStudents[i]->getName() == studentname)
   	{
