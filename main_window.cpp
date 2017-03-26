@@ -88,19 +88,25 @@ MainWindow::MainWindow(RedebotDatabase* data){
 //	gradesLabel = new QLabel("CS104: A at 98.3 %%");
   //  gradesPageLayout->addWidget(gradesLabel,0,0,7,7);
 
-
-
     officeHoursPageLayout = new QVBoxLayout();
     officeHoursPageWidget->setLayout(officeHoursPageLayout);
     	officeHoursLabel = new QLabel("See all office hours");
     	officeHoursLabel->setSizePolicy(QSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed));
     officeHoursPageLayout->addWidget(officeHoursLabel);
 
+    /*
+    // Display office hours in table form
+    officeHoursTable = new QTableWidget;
+    officeHoursPageLayout->addWidget(officeHoursTable);
+    const QStringList officeHoursLabels = new QStringList;
+    officeHoursLabels.append("Times");
+    officeHoursLabels.append("CPs");
+    officeHoursTable->setHorizontalHeaderLabels(officeHoursLabels);
+    */
+
     connect(logoutButton,SIGNAL(clicked()),this,SLOT(logoutlogin()));
     connect(viewGradesButton, SIGNAL(clicked()),this, SLOT(displayGradesPage()));
     connect(viewOfficeHoursButton, SIGNAL(clicked()),this, SLOT(displayOfficeHoursPage()));
-
-
 
     overallLayout->addLayout(contentLayout,2,0,4,4);
 	overallLayout->addLayout(headerLayout,0,0,1,4);

@@ -21,6 +21,8 @@
 	#include "redebotdatabase.h"
 	#include <QScrollArea>
 	#include <QStackedWidget>
+	#include <QTableView>
+	#include <QTableWidget>
 
 class MainWindow : public QWidget
 {
@@ -72,6 +74,7 @@ private:
 /*office hours page*/
 	QVBoxLayout* officeHoursPageLayout;
 	QLabel* officeHoursLabel;
+	QTableWidget* officeHoursTable;
 /*loginWindow*/
 	QWidget *loginWindow;
 	QVBoxLayout* loginLayout;
