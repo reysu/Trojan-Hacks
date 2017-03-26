@@ -101,19 +101,29 @@ void MainWindow::logoutlogin(){
 	}	
 }
 void MainWindow::loginWindowDisplay(){
+
 	loginWindow = new QWidget();
 	loginLayout = new QVBoxLayout();
-	usernameInput = new QLineEdit(); 
-	login = new QPushButton("login");
+	subLayoutr1 = new QHBoxLayout();
+	subLayoutr1 = new QHBoxLayout();
+	inputUsernameLabel = new QLabel("username");
+	inputPasswordLabel = new QLabel("password");
+	usernameInput = new QLineEdit(""); 
+	signinButton = new QPushButton("sign in");
 	passwordInput = new QLineEdit();
-	loginLayout->addWidget(usernameInput);
-	loginLayout->addWidget(passwordInput)
-	filenameLayout->addWidget(login);
+	subLayoutr1->addWidget(inputUsernameLabel);
+	subLayoutr1->addWidget(usernameInput);
+	subLayoutr2->addWidget(inputPasswordLabel);
+	subLayoutr2->addWidget(passwordInput);
 
-	filenameWindow->setLayout(filenameLayout);
-	filenameWindow->setWindowModality(Qt::ApplicationModal);
-	filenameWindow->show();
+	loginLayout->addLayout(subLayoutr1);
+	loginLayout->addLayout(subLayoutr2);
+	loginLayout->addWidget(signinButton);
 
-	connect(login, SIGNAL(clicked()), this, SLOT(hide()));
+	loginWindow->setLayout(loginLayout);
+	loginWindow->setWindowModality(Qt::ApplicationModal);
+	loginWindow->show();
+
+	connect(signinButton, SIGNAL(clicked()), this, SLOT(hide()));
 
 }
